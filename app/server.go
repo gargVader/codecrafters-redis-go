@@ -27,6 +27,7 @@ func main() {
 			fmt.Println("Error accepting connection: ", err.Error())
 			os.Exit(1)
 		}
+		defer connection.Close()
 		handleRequest(connection)
 	}
 }
@@ -39,7 +40,4 @@ func handleRequest(connection net.Conn) {
 		fmt.Println("Error reading: ", err.Error())
 	}
 	connection.Write([]byte("+PONG\r\n"))
-	// Close
-	connection.Close()
-
 }
