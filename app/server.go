@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	HOST = "127.0.0.1"
+	HOST = "localhost"
 	PORT = "6379"
 )
 
@@ -38,7 +38,6 @@ func handleRequest(connection net.Conn) {
 	if err != nil {
 		fmt.Println("Error reading: ", err.Error())
 	}
-	fmt.Println(string(buffer))
 	connection.Write([]byte("+PONG\r\n"))
 	// Close
 	connection.Close()
